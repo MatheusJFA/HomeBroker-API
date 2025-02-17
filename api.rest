@@ -14,12 +14,12 @@ Content-Type: application/json
 
 ###
 
-@assetSymbol = {{ createAsset.response.body.symbol }}
+@assetId = {{ createAsset.response.body._id }}
 
 ###
 # Look for an specific asset
 
-GET http://localhost:3000/assets/{{assetSymbol}}
+GET http://localhost:3000/assets/{{assetId}}
 
 ###
 # Look all assets
@@ -45,3 +45,14 @@ GET http://localhost:3000/wallets/{{walletId}}
 # Get all wallets
 
 GET http://localhost:3000/wallets
+
+###
+# Create a Wallet Asset resource
+
+POST http://localhost:3000/wallets/{{walletId}}/assets
+Content-Type: application/json
+
+{
+    "assetId": "{{assetId}}",
+    "shares": 100
+}
