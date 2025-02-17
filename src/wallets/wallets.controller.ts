@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param } from "@nestjs/common";
 import { WalletsService } from "./wallets.service";
 import { CreateWalletDto } from "./dto/create-wallet.dto";
+import { createWalletAssetDTO } from "./dto/create-wallet-asset.dto";
 
 @Controller("wallets")
 export class WalletsController {
@@ -19,5 +20,17 @@ export class WalletsController {
   @Get(":id")
   findOne(@Param("id") id: string) {
     return this.walletsService.findOne(id);
+  }
+
+  @Post(":id/assets")
+  createWalletAsset(
+    @Param("id") walletId,
+    @Body() body: { assetId: string; shares: number },
+  ) {
+    return this.walletsService.createWalletAsset({
+      walletId,
+      assetId: body.assetId,
+      shares: body.shares,
+    });
   }
 }
