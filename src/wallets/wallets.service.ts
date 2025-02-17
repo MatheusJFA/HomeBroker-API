@@ -4,7 +4,6 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Wallet } from "./entities/wallet.entity";
 import { Model } from "mongoose";
 import { WalletAsset } from "./entities/wallet-asset.entity";
-import { createWalletAssetDTO } from "./dto/create-wallet-asset.dto";
 
 @Injectable()
 export class WalletsService {
