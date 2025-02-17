@@ -1,0 +1,47 @@
+###
+# Create an Asset 
+# @name createAsset
+
+POST http://localhost:3000/assets
+Content-Type: application/json
+
+{
+    "name": "Test",
+    "symbol": "T1",
+    "price": 100,
+    "image": "TST.png"
+}
+
+###
+
+@assetSymbol = {{ createAsset.response.body.symbol }}
+
+###
+# Look for an specific asset
+
+GET http://localhost:3000/assets/{{assetSymbol}}
+
+###
+# Look all assets
+
+GET http://localhost:3000/assets
+
+###
+# Create a wallet
+# @name createWallet
+POST http://localhost:3000/wallets
+Content-Type: application/json
+
+###
+
+@walletId = {{ createWallet.response.body._id }}
+
+###
+# Get an wallet by it's id
+
+GET http://localhost:3000/wallets/{{walletId}}
+
+###
+# Get all wallets
+
+GET http://localhost:3000/wallets

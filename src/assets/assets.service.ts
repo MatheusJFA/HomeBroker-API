@@ -1,13 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAssetDto } from './dto/create-asset.dto';
-import { UpdateAssetDto } from './dto/update-asset.dto';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Asset } from './entities/asset.entity';
+import { Injectable } from "@nestjs/common";
+import { CreateAssetDto } from "./dto/create-asset.dto";
+import { UpdateAssetDto } from "./dto/update-asset.dto";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { Asset } from "./entities/asset.entity";
 
 @Injectable()
 export class AssetsService {
-
   constructor(@InjectModel(Asset.name) private assetSchema: Model<Asset>) {}
 
   create(createAssetDto: CreateAssetDto) {
