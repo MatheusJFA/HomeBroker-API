@@ -1,8 +1,8 @@
 import { Schema, SchemaFactory, Prop } from "@nestjs/mongoose";
 import mongoose, { HydratedDocument } from "mongoose";
 import crypto from "node:crypto";
-import { Asset, AssetDocument } from "src/assets/entities/asset.entity";
-import { Wallet, WalletDocument } from "./wallet.entity";
+import { AssetDocument } from "src/assets/entities/asset.entity";
+import { WalletDocument } from "./wallet.entity";
 
 export type WalletAssetDocument = HydratedDocument<WalletAsset>;
 
@@ -14,10 +14,10 @@ export class WalletAsset {
   @Prop({ type: mongoose.Schema.Types.Int32 })
   shares: number;
 
-  @Prop({ type: String, ref: Wallet.name })
+  @Prop({ type: String, ref: "Wallet" })
   wallet: WalletDocument | string;
 
-  @Prop({ type: String, ref: Asset.name })
+  @Prop({ type: String, ref: "Asset" })
   asset: AssetDocument | string;
 
   createdAt!: Date;
